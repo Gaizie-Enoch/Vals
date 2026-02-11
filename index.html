@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Happy Valentine ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: URL("Pam.jpeg");
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-width: 420px;
+            backdrop-filter: blur(10px);
+        }
+
+        .photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        button {
+            margin-top: 25px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            background: #fff;
+            color: #ff4f7a;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -20px;
+            font-size: 24px;
+            animation: floatUp 6s linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-110vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- HER PHOTO -->
+        <img src="Pam.jpeg" alt="My Valentine" class="photo">
+
+        <h1>Happy Valentine ❤️</h1>
+        <p id="message">
+            Every time I see you, my heart remembers why it chose you.
+            I LOVE YOU SO MUCH ❤️
+        </p>
+
+        <button onclick="changeMessage()">Click for a Surprise 💌</button>
+    </div>
+
+    <script>
+        const messages = [
+            "You are my favorite reason to smile ❤️",
+            "Loving you feels easy and real 💕",
+            "If I had one wish, it would still be you 😍",
+            "My heart feels safe with you 💖",
+            "I don't love you because everything is perfect but rather when things aren't perfect my heart still chooses you",
+        ];
+
+        function changeMessage() {
+            const randomIndex = Math.floor(Math.random() * messages.length);
+            document.getElementById("message").textContent = messages[randomIndex];
+            createHeart();
+        }
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.textContent = "❤️";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 7000);
+        }
+    </script>
+
+</body>
+</html>
